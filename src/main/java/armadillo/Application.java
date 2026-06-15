@@ -2,6 +2,7 @@ package armadillo;
 
 
 import armadillo.common.SimpleNameFactory;
+import armadillo.config.SpringBootApp;
 import armadillo.decoder.SmartByteBufDecoder;
 import armadillo.helper.ServerHandler;
 import armadillo.mapper.SysCardMapper;
@@ -104,6 +105,8 @@ public class Application {
                     Constant.getRoot_pool().execute(new bindServer(Constant.start + i, bootstrap));
                 Constant.getRoot_pool().execute(new bindServer(Constant.httpport, bootstrap));
                 InitDir();
+                // 启动Spring Boot HTTP服务器 (REST API)
+                SpringBootApp.start();
                 logger.info("Armadillo Start Success");
                 InitOther();
             }

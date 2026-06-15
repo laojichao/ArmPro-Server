@@ -42,6 +42,11 @@ dependencies {
     // https://mvnrepository.com/artifact/io.netty/netty-transport-native-epoll
     compile group: 'io.netty', name: 'netty-transport-native-epoll', version: '4.1.56.Final'
 
+    // Spring Boot Web (without Spring Boot parent, using starter-web directly)
+    // Exclude Spring Boot's default logging to avoid conflict with log4j
+    compile(group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.7.18') {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
 
     mybatisGenerator 'org.mybatis.generator:mybatis-generator-core:1.3.5'
     mybatisGenerator 'mysql:mysql-connector-java:5.1.40'
